@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container py-3">
+  <header>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+        <span class="fs-4">Messanger</span>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Главная</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#"  data-bs-toggle="modal" data-bs-target="#regModal">Регистрация</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#authModal">Авторизация</a>
+        <a class="py-2 link-body-emphasis text-decoration-none" href="#">Личный кабинет</a>
+      </nav>
+    </div>
+
+
+  </header>
+
+  <main>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Старт</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">0<small class="text-body-secondary fw-light">/месяц</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>10 чатов</li>
+              <li>10 Гб памяти</li>
+              <li>-</li>
+              <li>-</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Купить</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Максимальный</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">1000<small class="text-body-secondary fw-light">/месяц</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>100 чатов</li>
+              <li>100 Гб памяти</li>
+              <li>Техподдержка</li>
+              <li>-</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Купить</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-bg-primary border-primary">
+            <h4 class="my-0 fw-normal">Премиум</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">2000<small class="text-body-secondary fw-light">/месяц</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>безлимит</li>
+              <li>безлимит</li>
+              <li>безлимит</li>
+              <li>безлимит</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Купить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <small class="d-block mb-3 text-body-secondary">© 2017–2024</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Меню</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Главная</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Регистрация</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Авторизация</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Личный кабинет</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Контакты</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">-</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>О нас</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">-</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>
+
+    <!-- Модальное окно -->
+    <div class="modal fade" id="regModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Регистрация</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-warning alert-dismissible fade show" style="display: none"></div>
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="login" class="form-label">Логин</label>
+              <input type="text" class="form-control" id="login" placeholder="login">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Пароль</label>
+              <input type="password" class="form-control" id="password" placeholder="password">
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary" id="reg_button">Зарегистрироваться</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Модальное окно -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Авторизация</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <div class="authModalShow alert alert-warning alert-dismissible fade show" style="display: none"></div>
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="login_auth" class="form-label">Логин</label>
+              <input type="text" class="form-control" id="login_auth" placeholder="login">
+            </div>
+            <div class="mb-3">
+              <label for="password_auth" class="form-label">Пароль</label>
+              <input type="password" class="form-control" id="password_auth" placeholder="password">
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary" id="auth_button">Авторизация</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+      $('#auth_button').on('click', function(){
+          let login = $('#login_auth').val();
+          let password = $('#password_auth').val();
+          let token = $('input[name=csrfmiddlewaretoken]').val();
+          $.ajax({
+          url: '/ajaxAuth',
+          method: 'post',
+          dataType: 'html',
+          data: {csrfmiddlewaretoken: token, login: login, password: password},
+          success: function(data){
+            if(data == 2 || data == 3){
+              $('.authModalShow').show();
+              $('.authModalShow').addClass('alert-danger');
+              $('.authModalShow').removeClass('alert-success');
+            }
+            if(data == 2){
+               $('.authModalShow').text('Пароль задан не верно!');
+            }
+
+            if(data == 3){
+               $('.authModalShow').text('Логин задан не верно!');
+            }
+            if(data == 1){
+              $('.authModalShow').show();
+              $('.authModalShow').addClass('alert-success');
+              $('.authModalShow').removeClass('alert-danger');
+              $('.authModalShow').text('Вы успешно прошли авторизацию! Через 2 секунды вас перенаправят в личный кабинет!');
+              setTimeout(function(){
+                window.location.href = '/lk';
+              }, 3000);
+            }
+          }
+        });
+
+      });
+      $('#reg_button').on('click', function(){
+        let login = $('#login').val();
+        let password = $('#password').val();
+        let token = $('input[name=csrfmiddlewaretoken]').val();
+
+        $.ajax({
+          url: '/ajaxReg',
+          method: 'post',
+          dataType: 'html',
+          data: {csrfmiddlewaretoken: token, login: login, password: password},
+          success: function(data){
+            if(data == 1 || data == 2 || data == 3){
+              $('.alert').show();
+              $('.alert').addClass('alert-danger');
+              $('.alert').removeClass('alert-success');
+            }
+            if(data == 1){
+               $('.alert').text('Такой логин уже занят!');
+            }
+            if(data == 2){
+               $('.alert').text('Логин слишком короткий!');
+            }
+            if(data == 3){
+               $('.alert').text('Пароль слишком короткий!');
+            }
+            if(data == 4){
+              $('.alert').show();
+              $('.alert').addClass('alert-success');
+              $('.alert').removeClass('alert-danger');
+              $('.alert').text('Вы успешно зарегистрировались!');
+            }
+          }
+        });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

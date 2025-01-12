@@ -1,0 +1,50 @@
+{% extends 'lk/base.html' %}
+{% block content %}
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+         <h2>Личная панель</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Ваше имя:</label>
+              <input type="text" class="form-control" name="name" value="{{user.name}}" id="name" placeholder="Ваше имя">
+            </div>
+            <div class="mb-3">
+              <label for="login" class="form-label">Логин:</label>
+              <input type="text" class="form-control" name="login" value="{{user.login}}" id="login" placeholder="Логин">
+            </div>
+           <div class="mb-3">
+              <label for="new_password" class="form-label">Новый пароль:</label>
+              <input type="password" class="form-control" name="new_password" id="new_password" placeholder="Новый пароль">
+            </div>
+            <div class="mb-3">
+              <label for="old_password" class="form-label">Старый пароль:</label>
+              <input type="password" class="form-control" name="old_password" id="old_password" placeholder="Старый пароль">
+            </div>
+           <div class="mb-3">
+             <div class="row">
+               <div>
+                   {% if user.avatar %}
+                    <img src="/media/{{user.avatar}}" width="100px">
+                   {% else %}
+                    <img src="/static/default.png" width="100px">
+                   {% endif %}
+               </div>
+               <div>
+                  <label for="image" class="form-label">Аватарка:</label>
+                  <input type="file" class="form-control" name="image" id="image">
+               </div>
+
+             </div>
+                <div class="mb-3 mt-3">
+                    <button  class="btn btn-primary">Обновить</button>
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+    </div>
+  </div>
+{% endblock %}
