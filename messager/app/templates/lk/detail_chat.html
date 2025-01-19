@@ -2,7 +2,7 @@
 {% block content %}
   <div class="col-8">
     <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+      <div class="tab-pane fade " id="list-home" role="tabpanel" aria-labelledby="list-home-list">
          <h2>Личная панель</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -64,7 +64,23 @@
             </ol>
 
       </div>
-      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+      <div class="tab-pane fade show active" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+        {% if chat_start == 1 %}
+            <h3>{{chat.name}}</h3>
+            <p>{{chat.description}}</p>
+            <div class="listChat">
+
+            </div>
+            <div class="AddMessageChat">
+                 <div class="mb-3">
+                  <input type="text" class="form-control" name="message" id="message" placeholder="Ваше сообщение">
+                     <br />
+                      <button type="submit" class="btn btn-primary" id="add_button">Добавить</button>
+                </div>
+            </div>
+          {% endif %}
+
+      </div>
     </div>
   </div>
 {% endblock %}

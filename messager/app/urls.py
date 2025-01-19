@@ -5,5 +5,7 @@ urlpatterns = [
     path('lk', lk),
     path('ajaxReg', ajaxReg),
     path('ajaxAuth', ajaxAuth),
-    path('logout', logout)
+    path('logout', logout),
+    path('createChat', createChat),
+    path('view/<int:id>', detail_chat)
 ]

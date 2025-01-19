@@ -10,14 +10,52 @@
   <div class="row p-4">
     <div class="col-4">
       <div class="list-group" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Профиль</a>
-        <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Чаты</a>
+        <a class="list-group-item list-group-item-action {% if not 'chat' in request.session %} active {% endif %}" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Профиль</a>
+        <a class="list-group-item list-group-item-action {% if 'chat' in request.session %} active {% endif %}"  id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Чаты</a>
+
         <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Настройки</a>
         <a class="list-group-item list-group-item-action"  href="/logout" >Выйти</a>
       </div>
     </div>
   {% block content %} {% endblock %}
   </div>
+
+    <!-- Модальное окно создание чата-->
+    <div class="modal fade" id="createChatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Создание чата</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/createChat" method="POST" enctype="multipart/form-data">
+            <div class="authModalShow alert alert-warning alert-dismissible fade show" style="display: none"></div>
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Название чата</label>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Название чата">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Описание чата</label>
+              <input type="text" class="form-control" name="description" id="description" placeholder="Описание чата">
+            </div>
+              <div class="mb-3">
+                  <label for="image" class="form-label">Аватарка чата:</label>
+                  <input type="file" class="form-control" name="image" id="image">
+               </div>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary" id="auth_button">Создание чата</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
